@@ -73,7 +73,7 @@ public class JsonController {
         return jsonObject.get("downloadLocation").getAsString();
     }
 
-    public void savewhitelist(List<Course> courseList) {
+    public void saveWhitelist(List<Course> courseList) {
         Type listType = new TypeToken<List<Course>>() {}.getType();
         String json = new Gson().toJson(courseList, listType);
         // jsonのフォーマットに必要
@@ -87,7 +87,7 @@ public class JsonController {
         }
     }
 
-    public List<Course> readwhitelist() {
+    public List<Course> readWhitelist() {
         String json = this.readLocalJson(whitelist);
         Gson gson = new Gson();
         Type listType = new TypeToken<List<Course>>() {}.getType();

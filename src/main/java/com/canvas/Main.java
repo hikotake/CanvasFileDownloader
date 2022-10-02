@@ -55,10 +55,10 @@ public class Main {
                 }
             }
 
-            jsonController.savewhitelist(whitelistSelector.getList());
+            jsonController.saveWhitelist(whitelistSelector.getList());
         }
 
-        List<Course> whitelist = jsonController.readwhitelist();
+        List<Course> whitelist = jsonController.readWhitelist();
 
 
         whitelist.parallelStream().forEach(course -> {
