@@ -21,7 +21,7 @@ import java.nio.file.Paths;
 
 public class JsonController {
     static String tokenPath = "/Users/shoma/Projects/canvas_file_downloader/token.json";
-    static String blacklist = "/Users/shoma/Projects/canvas_file_downloader/blacklist.json";
+    static String whitelist = "/Users/shoma/Projects/canvas_file_downloader/whitelist.json";
     static String canvasUrlPath = "/Users/shoma/Projects/canvas_file_downloader/canvasUrl.json";
     static String downloadLocationPath = "/Users/shoma/Projects/canvas_file_downloader/downloadLocation.json";
 
@@ -73,13 +73,13 @@ public class JsonController {
         return jsonObject.get("downloadLocation").getAsString();
     }
 
-    public void saveBlacklist(List<Course> courseList) {
+    public void savewhitelist(List<Course> courseList) {
         Type listType = new TypeToken<List<Course>>() {}.getType();
         String json = new Gson().toJson(courseList, listType);
         // jsonのフォーマットに必要
         JsonElement jsonElement = JsonParser.parseString(json);
 
-        try (Writer writer = new FileWriter(blacklist)) {
+        try (Writer writer = new FileWriter(whitelist)) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             gson.toJson(jsonElement, writer);
         } catch (IOException e) {
@@ -87,8 +87,8 @@ public class JsonController {
         }
     }
 
-    public List<Course> readBlacklist() {
-        String json = this.readLocalJson(blacklist);
+    public List<Course> readwhitelist() {
+        String json = this.readLocalJson(whitelist);
         Gson gson = new Gson();
         Type listType = new TypeToken<List<Course>>() {}.getType();
         return gson.fromJson(json, listType);

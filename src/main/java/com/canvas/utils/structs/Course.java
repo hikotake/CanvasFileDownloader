@@ -3,7 +3,7 @@ package com.canvas.utils.structs;
 public class Course {
     private int id;
     private String name;
-    private boolean isBlacklisted = false;
+    private boolean iswhitelisted = false;
 
     public void formatName() {
         // 全角括弧内を消す
@@ -18,11 +18,11 @@ public class Course {
         return this.name;
     }
 
-    public boolean getIsBlacklisted() {
-        return this.isBlacklisted;
+    public boolean getIswhitelisted() {
+        return this.iswhitelisted;
     }
 
-    public void setIsBlacklisted(boolean isBlacklisted) {
-        this.isBlacklisted = isBlacklisted;
+    public void setIswhitelisted(boolean iswhitelisted) {
+        this.iswhitelisted = iswhitelisted;
     }
 }

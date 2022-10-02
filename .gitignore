@@ -1,6 +1,6 @@
 .vscode
 .DS_Store
-blacklist.json
+whitelist.json
 canvasUrl.json
 downloadLocation.json
 token.json

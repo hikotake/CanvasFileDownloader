@@ -23,7 +23,7 @@ public class Main {
     static String token;
     static Path downloadLocation;
 
-    static Path blacklistJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/blacklist.json");
+    static Path whitelistJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/whitelist.json");
     static Path tokenJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/token.json");
     static Path canvasUrlJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/canvasUrl.json");
     static Path downloadLocationJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/downloadLocation.json");
@@ -42,13 +42,12 @@ public class Main {
 
         this.setInformation();
 
-        List<Course> courseList = courseController.getCourses(canvasUrl, token);
-
-        if (!Files.exists(blacklistJsonPath)) {
-            CheckboxModel blacklistSelector = new CheckboxModel(courseList);
+        if (!Files.exists(whitelistJsonPath)) {
+            List<Course> courseList = courseController.getCourses(canvasUrl, token);
+            CheckboxModel whitelistSelector = new CheckboxModel(courseList);
 
             // ブラックリスト選択画面が表示されている間にも次の処理に進んでしまうため，待機させる
-            while (blacklistSelector.getIsRunning()) {
+            while (whitelistSelector.getIsRunning()) {
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
@@ -56,17 +55,13 @@ public class Main {
                 }
             }
 
-            jsonController.saveBlacklist(blacklistSelector.getList());
+            jsonController.savewhitelist(whitelistSelector.getList());
         }
 
-        List<Course> blacklist = jsonController.readBlacklist();
+        List<Course> whitelist = jsonController.readwhitelist();
 
-        // blacklistに含まれるコースを除外する
-        // https://blog.huwasaku.com/58
-        courseList
-                .removeAll(courseList.stream().filter(x -> blacklist.stream().anyMatch(y -> y.getId() == (x.getId()))).collect(Collectors.toList()));
 
-        courseList.parallelStream().forEach(course -> {
+        whitelist.parallelStream().forEach(course -> {
             List<Folder> folderList = folderController.getFolders(canvasUrl, token, course.getId());
             // 親ディレクトリを先に作成する必要があるため，fullNameが短い順に並べることでディレクトリの作成順を決める
             folderList = folderList.stream().sorted((f1, f2) -> f1.getFullName().length() - f2.getFullName().length()).collect(Collectors.toList());

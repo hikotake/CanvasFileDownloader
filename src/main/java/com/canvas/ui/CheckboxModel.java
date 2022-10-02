@@ -27,7 +27,7 @@ public class CheckboxModel {
     private Boolean isRunning = true;
 
     public CheckboxModel(List<Course> courseList) {
-        JFrame frame = new JFrame("Select Blacklist Course");
+        JFrame frame = new JFrame("Select whitelist Course");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         listModel = new DefaultListModel<>();
 
@@ -56,7 +56,7 @@ public class CheckboxModel {
                 int index = list.locationToIndex(event.getPoint());// Get index of item
                                                                    // clicked
                 Course item = (Course) list.getModel().getElementAt(index);
-                item.setIsBlacklisted(!item.getIsBlacklisted()); // Toggle selected state
+                item.setIswhitelisted(!item.getIswhitelisted()); // Toggle selected state
                 list.repaint(list.getCellBounds(index, index));// Repaint cell
             }
         });
@@ -70,7 +70,7 @@ public class CheckboxModel {
         List<Course> result = new ArrayList<>();
 
         for (int i = 0; i < listModel.size(); i++) {
-            if (listModel.getElementAt(i).getIsBlacklisted() == true) {
+            if (listModel.getElementAt(i).getIswhitelisted() == true) {
                 result.add(listModel.getElementAt(i));
             }
         }
@@ -87,7 +87,7 @@ public class CheckboxModel {
 class CheckListRenderer extends JCheckBox implements ListCellRenderer {
     public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean hasFocus) {
         setEnabled(list.isEnabled());
-        setSelected(((Course) value).getIsBlacklisted());
+        setSelected(((Course) value).getIswhitelisted());
         setFont(list.getFont());
         setBackground(list.getBackground());
         setForeground(list.getForeground());
