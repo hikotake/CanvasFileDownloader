@@ -20,10 +20,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class JsonController {
-    static String tokenPath = "token.json";
-    static String blacklist = "blacklist.json";
-    static String canvasUrlPath = "canvasUrl.json";
-    static String downloadLocationPath = "downloadLocation.json";
+    static String tokenPath = "/Users/shoma/Projects/canvas_file_downloader/token.json";
+    static String blacklist = "/Users/shoma/Projects/canvas_file_downloader/blacklist.json";
+    static String canvasUrlPath = "/Users/shoma/Projects/canvas_file_downloader/canvasUrl.json";
+    static String downloadLocationPath = "/Users/shoma/Projects/canvas_file_downloader/downloadLocation.json";
 
     public void saveToken(String token) {
         try (Writer writer = new FileWriter(tokenPath)) {

@@ -23,10 +23,10 @@ public class Main {
     static String token;
     static Path downloadLocation;
 
-    static Path blacklistJsonPath = Paths.get("blacklist.json");
-    static Path tokenJsonPath = Paths.get("token.json");
-    static Path canvasUrlJsonPath = Paths.get("canvasUrl.json");
-    static Path downloadLocationJsonPath = Paths.get("downloadLocation.json");
+    static Path blacklistJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/blacklist.json");
+    static Path tokenJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/token.json");
+    static Path canvasUrlJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/canvasUrl.json");
+    static Path downloadLocationJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/downloadLocation.json");
 
     public static void main(String[] args) {
         new Main();
@@ -117,7 +117,7 @@ public class Main {
         JsonController jc = new JsonController();
 
         if (!Files.exists(canvasUrlJsonPath)) {
-            Main.canvasUrl = cr.readConsole("Canvs URL");
+            Main.canvasUrl = cr.readConsole("Canvas URL");
             jc.saveCanvasUrl(Main.canvasUrl);
         } else
             Main.canvasUrl = jc.readCanvasUrl();
