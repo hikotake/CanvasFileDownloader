@@ -23,10 +23,10 @@ public class Main {
     static String token;
     static Path downloadLocation;
 
-    static Path whitelistJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/whitelist.json");
-    static Path tokenJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/token.json");
-    static Path canvasUrlJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/canvasUrl.json");
-    static Path downloadLocationJsonPath = Paths.get("/Users/shoma/Projects/canvas_file_downloader/downloadLocation.json");
+    static Path whitelistJsonPath = Paths.get("whitelist.json");
+    static Path tokenJsonPath = Paths.get("token.json");
+    static Path canvasUrlJsonPath = Paths.get("canvasUrl.json");
+    static Path downloadLocationJsonPath = Paths.get("downloadLocation.json");
 
     public static void main(String[] args) {
         new Main();
