@@ -1,9 +1,6 @@
 .vscode
 .DS_Store
-whitelist.json
-canvasUrl.json
-downloadLocation.json
-token.json
+*.json
 
 target/
 pom.xml.tag
